@@ -1,0 +1,80 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-image: url("{{ asset('img/beranda.jpeg') }}");
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        padding-top: 70px;
+
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex-grow: 1;
+    }
+
+    .footer {
+        background-color: #E0E0E0;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .footer .social-icons {
+        display: flex;
+        gap: 20px;
+    }
+    .footer .social-icons a {
+        color: #333;
+        transition: color 0.3s;
+    }
+    .footer .social-icons a:hover {
+        color: #080053;
+    }
+    .footer .social-icons .icon {
+        width: 28px;
+        height: 28px;
+    }
+    .footer .about {
+        text-align: right;
+        color: #555;
+    }
+    .footer .about h3 {
+        margin: 0 0 10px;
+        font-size: 1.2em;
+    }
+    .footer .about p {
+        margin: 0;
+        font-size: 0.9em;
+    }
+</style>
+
+<div class="footer">
+    <div class="social-icons">
+        <a href="#">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="#">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="#">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+        </a>
+        <a href="https://wa.me/6282288010027" target="_blank">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                <path d="M9 10a.5.5 0 0 0 1 1a5 5 0 0 0 5 5a.5.5 0 0 0 1-1a5 5 0 0 0-5-5a.5.5 0 0 0-1 1" />
+            </svg>
+        </a>
+    </div>
+    <div class="about">
+        <h3>Tentang Kami</h3>
+        <p>Aplikasi pengaduan fasilitas umum untuk Desa Tirtomoyo berbasis website.</p>
+        <p>&copy; {{ date('Y') }} LaporDesa. All Rights Reserved.</p>
+    </div>
+</div>
