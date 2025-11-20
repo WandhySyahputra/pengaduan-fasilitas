@@ -9,9 +9,19 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ManagePengaduanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\File;
 
 
-Route::get('/', function () { return view('home'); })->name('home');
+Route::get('/', function () {
+    $path = public_path('galeri');
+
+    $files = [];
+    if (File::exists($path)) {
+        $files = File::files($path);
+    }
+
+    return view('home', compact('files'));
+})->name('home');
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -34,6 +44,7 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(
     // --- Manajemen Master Data ---
     Route::get('/users', [ManageUserController::class, 'index'])->name('manage-users.index');
     Route::post('/users', [ManageUserController::class, 'store'])->name('manage-users.store');
+    Route::put('/users/{user}/password', [ManageUserController::class, 'updatePassword'])->name('manage-users.update-password');
     Route::delete('/users/{user}', [ManageUserController::class, 'destroy'])->name('manage-users.destroy');
 
     // --- Manajemen Fasilitas ---

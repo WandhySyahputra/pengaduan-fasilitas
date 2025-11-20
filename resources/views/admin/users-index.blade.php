@@ -69,6 +69,9 @@
                             @if ($user->role == 'admin')
                                 <span class="action-disabled">Disabled</span>
                             @else
+                                <button type="button" class="action-edit" style="background:none; border:none; cursor:pointer; margin-right:10px;" onclick="openPasswordModal('{{ $user->id }}', '{{ $user->nama }}')">
+                                    Ganti Pass
+                                </button>
                                 <form action="{{ route('admin.manage-users.destroy', $user->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
@@ -95,40 +98,67 @@
         </div>
         <div class="modal-body">
             <form action="{{ route('admin.manage-users.store') }}" method="POST">
-    @csrf
-    <div class="form-group">
-        <label for="nama">Nama Lengkap *</label>
-        <input type="text" name="nama" value="{{ old('nama') }}" required>
-        @error('nama') <div class="alert-danger">{{ $message }}</div> @enderror
-    </div>
-    <div class="form-group">
-        <label for="email">Email *</label>
-        <input type="number" name="email" value="{{ old('email') }}" required>
-        @error('email') <div class="alert-danger">{{ $message }}</div> @enderror
-    </div>
+                @csrf
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap *</label>
+                    <input type="text" name="nama" value="{{ old('nama') }}" required>
+                    @error('nama') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="number" name="email" value="{{ old('email') }}" required>
+                    @error('email') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
 
-    <div class="form-group">
-        <label for="no_telp">No. Telepon</label>
-        <input type="number" name="no_telp" value="{{ old('no_telp') }}">
-        @error('no_telp') <div class="alert-danger">{{ $message }}</div> @enderror
+                <div class="form-group">
+                    <label for="no_telp">No. Telepon</label>
+                    <input type="number" name="no_telp" value="{{ old('no_telp') }}">
+                    @error('no_telp') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" name="alamat" value="{{ old('alamat') }}">
+                    @error('alamat') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" name="password" required>
+                    @error('password') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Password *</label>
+                    <input type="password" name="password_confirmation" required>
+                </div>
+                <input type="hidden" name="role" value="warga">
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Simpan Pengguna</button>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="alamat">Alamat</label>
-        <input type="text" name="alamat" value="{{ old('alamat') }}">
-        @error('alamat') <div class="alert-danger">{{ $message }}</div> @enderror
-    </div>
-    <div class="form-group">
-        <label for="password">Password *</label>
-        <input type="password" name="password" required>
-        @error('password') <div class="alert-danger">{{ $message }}</div> @enderror
-    </div>
-    <div class="form-group">
-        <label for="password_confirmation">Konfirmasi Password *</label>
-        <input type="password" name="password_confirmation" required>
-    </div>
-<input type="hidden" name="role" value="warga">
-    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Simpan Pengguna</button>
-</form>
+</div>
+<div id="passwordModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Ganti Password: <span id="passUserNama" style="font-weight:normal; font-size:0.8em;"></span></h2>
+            <span class="close-button-pass close-button">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="formPassword" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group">
+                    <label for="new_password">Password Baru *</label>
+                    <input type="password" name="password" required placeholder="Minimal 8 karakter">
+                    @error('password') <div class="alert-danger">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="new_password_confirmation">Konfirmasi Password Baru *</label>
+                    <input type="password" name="password_confirmation" required placeholder="Ulangi password baru">
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Update Password</button>
+            </form>
         </div>
     </div>
 </div>
@@ -136,15 +166,51 @@
 
 @push('scripts')
 <script>
-    const modal = document.getElementById('userModal');
-    const btn = document.getElementById('addUserBtn');
-    const closeBtn = document.querySelector('.close-button');
-    btn.onclick = function() { modal.style.display = "flex"; }
-    closeBtn.onclick = function() { modal.style.display = "none"; }
-    window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
+    // --- LOGIKA MODAL TAMBAH USER ---
+    const modalAdd = document.getElementById('userModal');
+    const btnAdd = document.getElementById('addUserBtn');
+    const closeAdd = document.querySelector('#userModal .close-button');
 
-    @if ($errors->any())
-        modal.style.display = "flex";
+    if(btnAdd) {
+        btnAdd.onclick = function() { modalAdd.style.display = "flex"; }
+    }
+    if(closeAdd) {
+        closeAdd.onclick = function() { modalAdd.style.display = "none"; }
+    }
+
+    // --- LOGIKA MODAL PASSWORD (BARU) ---
+    const modalPass = document.getElementById('passwordModal');
+    const closePass = document.querySelector('.close-button-pass');
+    const formPass = document.getElementById('formPassword');
+    const spanUserNama = document.getElementById('passUserNama');
+
+    function openPasswordModal(userId, userName) {
+        let url = "{{ route('admin.manage-users.update-password', ':id') }}";
+        url = url.replace(':id', userId);
+
+        formPass.action = url;
+        spanUserNama.innerText = userName;
+        modalPass.style.display = "flex";
+    }
+
+    if(closePass) {
+        closePass.onclick = function() { modalPass.style.display = "none"; }
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modalAdd) {
+            modalAdd.style.display = "none";
+        }
+        if (event.target == modalPass) {
+            modalPass.style.display = "none";
+        }
+    }
+
+    @if ($errors->has('nama') || $errors->has('email'))
+        modalAdd.style.display = "flex";
+    @endif
+
+    @if ($errors->has('password'))
     @endif
 </script>
 @endpush

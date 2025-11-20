@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class ManageUserController extends Controller
 {
@@ -47,5 +48,18 @@ class ManageUserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.manage-users.index')->with('success', 'User berhasil dihapus.');
+    }
+
+    public function updatePassword(Request $request, User $user)
+    {
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return back()->with('success', 'Password pengguna berhasil diperbarui.');
     }
 }

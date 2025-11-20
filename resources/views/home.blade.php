@@ -25,6 +25,21 @@
         .card-step:hover {
             transform: translateY(-10px);
         }
+        .galeri-img-box {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .galeri-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .galeri-img-box:hover img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -43,6 +58,31 @@
             @endauth
         </div>
     </header>
+
+    <section id="galeri" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary">Galeri Fasilitas</h2>
+                <p class="text-muted">Foto-foto fasilitas terbaru yang tersedia</p>
+            </div>
+            <div class="row g-4">
+                @forelse($files as $file)
+                    <div class="col-md-4 col-sm-6">
+                        <div class="galeri-img-box">
+                            <img src="{{ asset('galeri/' . $file->getFilename()) }}"
+                                alt="Fasilitas Desa"
+                                loading="lazy">
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p class="text-muted">Belum ada foto di folder public/galeri.</p>
+                    </div>
+                @endforelse
+            </div>
+            </div>
+        </div>
+    </section>
 
     <section id="cara-lapor" class="py-5 bg-light">
         <div class="container">
