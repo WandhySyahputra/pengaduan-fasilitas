@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'nama' => 'Warga Tirtomoyo',
-            'email' => 'user@example.com',
+            'email' => 'user@gmail.com',
             'password' => Hash::make('password'),
             'no_telp' => '081234567890',
             'alamat' => 'Jl. Mawar No. 1, Desa Tirtomoyo',
@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'nama' => 'Admin Desa',
-            'email' => '9876543210987654',
-            'password' => Hash::make('adminpassword'),
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin'),
             'no_telp' => '089876543210',
             'alamat' => 'Kantor Desa Tirtomoyo',
             'role' => 'admin',
