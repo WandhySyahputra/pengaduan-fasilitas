@@ -42,7 +42,7 @@
 <div class="container">
     <div class="page-header">
         <h1>Kelola Pengguna</h1>
-        <button id="addUserBtn" class="btn-primary">+ Tambah Warga</button>
+        <button id="addUserBtn" class="btn-primary">+ Tambah</button>
     </div>
 
     <div class="table-wrapper">

@@ -5,7 +5,7 @@
 @push('styles')
 <style>
     .container { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-    .table-history { width: 100%; border-collapse: collapse; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+    .table-history { width: 100%; border-collapse: collapse; background-color: ORANGE; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
     .table-history th, .table-history td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
     .table-history th { background-color: #f8f9fa; }
     .status { padding: 5px 10px; border-radius: 20px; font-size: 0.8em; font-weight: bold; color: white; }
@@ -14,7 +14,7 @@
     .status-selesai { background-color: #28a745; }
     .status-ditolak { background-color: #dc3545; }
     .action-link { color: #007bff; text-decoration: none; font-weight: bold; }
-    .empty-history { text-align: center; padding: 50px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .empty-history { text-align: center; padding: 50px; background-color: ORANGE; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 </style>
 @endpush
 

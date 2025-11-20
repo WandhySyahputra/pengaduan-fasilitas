@@ -1,7 +1,7 @@
 <style>
-    .navbar { top: 0; left: 0; position: fixed; width: 100%; z-index: 1000; background-color: #080053; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+    .navbar { top: 0; left: 0; position: fixed; width: 100%; z-index: 1000; background-color: orange; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
     .navbar .left-section, .navbar .right-section, .navbar .nav-link { display: flex; align-items: center; gap: 15px; }
-    .navbar a { color: white; text-decoration: none; font-size: 1em; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+    .navbar a { color: black; text-decoration: none; font-size: 1em; font-weight: bold; display: flex; align-items: center; gap: 8px; }
     .nav-link:hover { opacity: 0.8; }
     .navbar .icon { width: 24px; height: 24px;}
     .navbar .login, .navbar .signup { background-color: white; color: #0A0A46; padding: 8px 16px; border-radius: 20px; }
@@ -91,12 +91,6 @@
         @endguest
 
         @auth
-            <div>
-                <a href="{{ url('/laporan-saya') }}" class="nav-link">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
-                    <span>Laporan Saya</span>
-                </a>
-            </div>
             <div class="dropdown">
                 <button onclick="toggleDropdown()" class="dropdown-toggle">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -104,6 +98,11 @@
                 </button>
                 <div id="myDropdown" class="dropdown-menu">
                     <a href="{{ route('profile.show') }}">Profile</a>
+            
+                <a href="{{ url('/laporan-saya') }}" class="nav-link">
+                    <span>Laporan Saya</span>
+                </a>
+            
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="dropdown-logout-btn">Logout</button>

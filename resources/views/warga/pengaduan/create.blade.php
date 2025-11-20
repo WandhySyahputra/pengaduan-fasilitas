@@ -14,7 +14,7 @@
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 15px; border-radius: 5px; border: 1px solid #ccc; font-size: 14px; box-sizing: border-box; margin: 0; }
     .form-group textarea { resize: vertical; min-height: 200px; }
     .upload-section { padding: 10px; border: 1px dashed #ccc; border-radius: 5px; text-align: center; color: #777; font-size: 14px; }
-    .button-group { display: flex; justify-content: space-between; align-items: center; }
+    .button-group { display: flex; justify-content: end; align-items: center; }
     .submit-btn { background-color: #3A64A3; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
     .submit-btn:hover { background-color: #080053; }
     .alert-danger ul { list-style: none; padding: 0; margin: 0; color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px;}
@@ -22,7 +22,7 @@
 @endpush
 
 <div class="main-content">
-    <h1>Layanan Pengaduan Fasilitas Umum Desa Tirtomoyo</h1>
+    <h1>Kirim Laporan Pengaduan Fasilitas Kampus STIMATA</h1>
     <p>Buat pengaduan langsung secara online</p>
 </div>
 
@@ -64,10 +64,9 @@
         <div class="form-group">
             <label for="lampiran">Lampiran (Bisa lebih dari satu) *</label>
             <input type="file" id="lampiran" name="lampiran[]" accept=".jpg, .jpeg, .png" required multiple>
-            <small>Tahan Ctrl (atau Cmd di Mac) untuk memilih lebih dari satu foto.</small>
+            <small>* Maksimal 6 file foto.</small>
         </div>
         <div class="button-group">
-            <a href="#">Panduan</a>
             <input type="submit" class="submit-btn" value="SUBMIT">
         </div>
     </form>

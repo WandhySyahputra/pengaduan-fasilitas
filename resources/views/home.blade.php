@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengaduan Fasilitas Publik</title>
+    <title>SARPRAS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .hero-section {
@@ -33,7 +33,7 @@
 
     <header class="hero-section">
         <div class="container">
-            <h1 class="display-4 fw-bold">Layanan Pengaduan Fasilitas Kampus STIMATA</h1>
+            <h1 class="display-4 fw-bold">Sistem Informasi Pengaduan Fasilitas Kampus STIMATA</h1>
             <p class="lead mb-4">Sampaikan laporan Anda terkait kerusakan fasilitas kampus secara online, transparan, dan terpercaya.</p>
 
             @auth
@@ -62,14 +62,14 @@
                     <div class="card card-step h-100 p-4 text-center">
                         <div class="h1 text-primary mb-3">🔄</div>
                         <h4>2. Proses Verifikasi</h4>
-                        <p>Laporan Anda akan diverifikasi dan diteruskan ke pihak terkait untuk ditindaklanjuti.</p>
+                        <p>Laporan Anda akan diverifikasi dan diteruskan ke sarpras untuk ditindaklanjuti.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card card-step h-100 p-4 text-center">
                         <div class="h1 text-primary mb-3">✅</div>
                         <h4>3. Selesai</h4>
-                        <p>Pantau status laporan Anda hingga selesai diperbaiki oleh petugas.</p>
+                        <p>Pantau status laporan Anda hingga selesai diperbaiki oleh petugas sarpras.</p>
                     </div>
                 </div>
             </div>

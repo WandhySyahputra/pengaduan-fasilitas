@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #080053;
+            background-color: orange;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -42,6 +42,9 @@
             transition: all 0.3s;
             z-index: 999;
         }
+        .judul {
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -52,9 +55,9 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
 
-                <div class="text-center mb-4">
-                    <h2 class="fw-bold text-white">Buat Akun Baru</h2>
-                    <p class="text-white">Silakan isi data diri Anda dengan benar</p>
+                <div class="judul text-center mb-4">
+                    <h2 class="fw-bold ">Buat Akun Baru</h2>
+                    <p>Silakan isi data diri Anda dengan benar</p>
                 </div>
 
                 <div class="card card-registration bg-white">
