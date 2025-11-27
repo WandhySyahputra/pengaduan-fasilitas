@@ -113,7 +113,7 @@
 <div class="login-body">
     <div class="form-container">
         <h2 class="form-title">Masuk</h2>
-        <p class="form-instruction">Masukkan Email dan kata sandi Anda. Jangan gunakan spasi pada password.</p>
+        <p class="form-instruction">Masukkan Email dan kata sandi Anda.<br>Jangan gunakan spasi pada password.</p>
 
         <form action="{{ route('login') }}" method="POST" novalidate>
             @csrf
@@ -139,6 +139,8 @@
             <button type="submit" class="submit-btn">
                 <span>Masuk</span>
             </button>
+            <p class="text-center pt-2">Reset Password hubungi <a href="https://wa.me/6282288010027">di sini</a></p>
+            <p class="register-text">Belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
         </form>
     </div>
 </div>

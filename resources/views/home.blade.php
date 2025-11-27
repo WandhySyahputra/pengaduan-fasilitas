@@ -52,7 +52,7 @@
             <p class="lead mb-4">Sampaikan laporan Anda terkait kerusakan fasilitas kampus secara online, transparan, dan terpercaya.</p>
 
             @auth
-                <a href="#" class="btn btn-primary btn-lg px-5">Tulis Pengaduan</a>
+                <a href="{{ route('pengaduan.create') }}" class="btn btn-primary btn-lg px-5">Tulis Pengaduan</a>
             @else
                 <a href="{{ route('login') }}" class="btn btn-primary btn-lg px-5">Login Untuk Melapor</a>
             @endauth

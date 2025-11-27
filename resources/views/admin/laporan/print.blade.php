@@ -33,7 +33,7 @@
         .status-ditolak { color: red; }
 
         /* Foto & Tanggapan */
-        .foto-container img { max-width: 150px; height: auto; margin: 5px; border: 1px solid #ddd; padding: 3px; }
+        .foto-container img { max-width: 150px; max-height: 150px; margin: 5px; border: 1px solid #ddd; padding: 3px; }
         .tanggapan-box { background-color: #f9f9f9; padding: 10px; border-left: 4px solid #ccc; margin-top: 10px; }
     </style>
 </head>
@@ -97,6 +97,21 @@
     <div style="margin-top: 20px; text-align: right;">
         <p>Total Laporan: {{ $laporan->count() }}</p>
     </div>
+
+    <table class="ttd" style="width: 100%; margin-top: 50px;">
+        <tr>
+            <td style="width: 70%;"></td>
+            <td style="width: 30%; text-align: left;">
+                <p>Malang, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
+                <p>Mengetahui,</p>
+                <p>Penanggung Jawab SARPRAS</p>
+                <br><br><br>
+                <p style="text-decoration: underline; font-weight: bold; margin: 0;">
+                    Heri Purnomo, S.Kom., MMSI
+                </p>
+            </td>
+        </tr>
+    </table>
 
     <div class="page-break"></div>
 
@@ -163,9 +178,11 @@
                 </div>
             </div>
 
+            <div style="margin-top: 10px;">
+                <strong>Foto Bukti:</strong>
+            </div>
             @if($row->fotos->count() > 0)
                 <div style="margin-top: 10px;">
-                    <strong>Foto Bukti:</strong><br>
                     <div class="foto-container">
                         @foreach($row->fotos as $foto)
                             {{-- Gunakan public_path agar gambar terbaca oleh dompdf di server lokal --}}
@@ -192,6 +209,21 @@
                 <p style="color: #888; font-style: italic; margin-top: 15px;">Belum ada tanggapan.</p>
             @endif
         </div>
+            
+        <table class="ttd" style="width: 100%; margin-top: 50px;">
+            <tr>
+                <td style="width: 70%;"></td>
+                <td style="width: 30%; text-align: left;">
+                    <p>Malang, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
+                    <p>Mengetahui,</p>
+                    <p>Penanggung Jawab SARPRAS</p>
+                    <br><br><br>
+                    <p style="text-decoration: underline; font-weight: bold; margin: 0;">
+                        Heri Purnomo, S.Kom., MMSI
+                    </p>
+                </td>
+            </tr>
+        </table>
 
         @if(!$loop->last)
             <div class="page-break"></div>

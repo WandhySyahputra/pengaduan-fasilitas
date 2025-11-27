@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email *</label>
-                    <input type="number" name="email" value="{{ old('email') }}" required>
+                    <input type="text" name="email" value="{{ old('email') }}" required>
                     @error('email') <div class="alert-danger">{{ $message }}</div> @enderror
                 </div>
 
